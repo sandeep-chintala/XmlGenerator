@@ -12,7 +12,7 @@
         <ng-container *ngFor="let keyvalue of xmlKeyValues.Values;let i = index">
             <div class="card-body form-inline">
                 {{keyvalue.key}} :
-                <input type="text" [attr.id]="keyvalue.key+'txt'" class="form-control">
+                <input type="text" [attr.id]="keyvalue.key+'txt'" [value]="keyvalue.value" class="form-control">
             </div>
         </ng-container>
         <div *ngFor="let keyvalue of xmlKeyValues.childKey;let i = index">
@@ -20,12 +20,12 @@
                 <div class="card">
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0">
-                            <a data-toggle="collapse" [attr.href]="'#collapse' + i" role="button" aria-expanded="false" aria-controls="collapseOne">
+                            <a data-toggle="collapse" [attr.href]="'#collapse_' + i" role="button" aria-expanded="false" aria-controls="collapseOne">
                                 {{keyvalue.Key}}
                             </a>
                         </h5>
                     </div>
-                    <div [attr.id]="'collapse' + i" class="collapse" role="tabpanel" aria-labelledby="headingOne" [attr.data-parent]="'#accordion_' + i">
+                    <div [attr.id]="'collapse_' + i" class="collapse" role="tabpanel" aria-labelledby="headingOne" [attr.data-parent]="'#accordion_' + i">
                         <div class="card-body">
                             <ng-container *ngIf="keyvalue != undefined">
                                 <div *ngFor="let childkeyvalue of keyvalue.Values;let i = index">
@@ -35,19 +35,48 @@
                                     </div>
                                 </div>
                                 <div *ngFor="let childkeyvalue of keyvalue.childKey;let j = index">
-                                    <div [attr.id]="'accordion_' + i+j" role="tablist">
+                                    <div [attr.id]="'accordion_' + i+'_'+j" role="tablist">
                                         <div class="card">
                                             <div class="card-header" role="tab" id="headingOne">
                                                 <h5 class="mb-0">
-                                                    <a data-toggle="collapse" [attr.href]="'#collapse' + i+j" role="button" aria-expanded="false" aria-controls="collapseOne">
+                                                    <a data-toggle="collapse" [attr.href]="'#collapse_' + i+'_'+j" role="button" aria-expanded="false" aria-controls="collapseOne">
                                                         {{childkeyvalue.Key}}
                                                     </a>
                                                 </h5>
                                             </div>
-                                            <div [attr.id]="'collapse' + i+j" class="collapse" role="tabpanel" aria-labelledby="headingOne" [attr.data-parent]="'#accordion_' + i+j">
-                                                <div class="card-body form-inline">
-                                                    Company Name :
-                                                    <input type="text" class="form-control">
+                                            <div [attr.id]="'collapse_' + i+'_'+j" class="collapse" role="tabpanel" aria-labelledby="headingOne" [attr.data-parent]="'#accordion_' + i+'_'+j">
+                                                <div class="card-body">
+                                                    <ng-container *ngIf="childkeyvalue != undefined">
+                                                        <div *ngFor="let subchildkeyvalue of childkeyvalue.Values;let k = index">
+                                                            <div class="card-body form-inline">
+                                                                {{subchildkeyvalue.key}} :
+                                                                <input type="text" [attr.id]="subchildkeyvalue.key+'txt'" [value]="subchildkeyvalue.value" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div *ngFor="let subchildkeyvalue of childkeyvalue.childKey;let k = index">
+                                                            <div [attr.id]="'accordion_' + i +'_'+j+'_'+k" role="tablist">
+                                                                <div class="card">
+                                                                    <div class="card-header" role="tab" id="headingOne">
+                                                                        <h5 class="mb-0">
+                                                                            <a data-toggle="collapse" [attr.href]="'#collapse_' + i+'_'+j+'_'+k" role="button" aria-expanded="false" aria-controls="collapseOne">
+                                                                                {{subchildkeyvalue.Key}}
+                                                                            </a>
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div [attr.id]="'collapse_' + i+'_'+j+'_'+k" class="collapse" role="tabpanel" aria-labelledby="headingOne" [attr.data-parent]="'#accordion_' + i+'_'+j+'_'+k">
+                                                                        <ng-container *ngIf="subchildkeyvalue != undefined">
+                                                                            <div *ngFor="let subSubchildkeyvalue of subchildkeyvalue.Values;let k = index">
+                                                                                <div class="card-body form-inline">
+                                                                                    {{subSubchildkeyvalue.key}} :
+                                                                                    <input type="text" [attr.id]="subSubchildkeyvalue.key+'txt'" [value]="subSubchildkeyvalue.value" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </ng-container>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </ng-container>
                                                 </div>
                                             </div>
                                         </div>
