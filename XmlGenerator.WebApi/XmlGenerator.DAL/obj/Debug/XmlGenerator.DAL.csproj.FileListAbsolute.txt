@@ -1,0 +1,5 @@
+E:\XmlGenerator_Git\XmlGenerator.WebApi\XmlGenerator.DAL\bin\Debug\XmlGenerator.DAL.dll
+E:\XmlGenerator_Git\XmlGenerator.WebApi\XmlGenerator.DAL\bin\Debug\XmlGenerator.DAL.pdb
+E:\XmlGenerator_Git\XmlGenerator.WebApi\XmlGenerator.DAL\obj\Debug\XmlGenerator.DAL.dll
+E:\XmlGenerator_Git\XmlGenerator.WebApi\XmlGenerator.DAL\obj\Debug\XmlGenerator.DAL.pdb
+E:\XmlGenerator_Git\XmlGenerator.WebApi\XmlGenerator.DAL\obj\Debug\XmlGenerator.DAL.csprojResolveAssemblyReference.cache
